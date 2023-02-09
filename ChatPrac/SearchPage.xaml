@@ -9,6 +9,15 @@
       Title="SearchPage">
 
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Column="0">
+            <TextBlock Text="Departments" HorizontalAlignment="Center" Margin="20"/>
+        </StackPanel>
+
     </Grid>
 </Page>
