@@ -24,5 +24,10 @@ namespace ChatPrac
 		{
 			InitializeComponent();
 		}
+
+		private void tbSearch_SelectionChanged(object sender, RoutedEventArgs e)
+		{
+
+		}
 	}
 }

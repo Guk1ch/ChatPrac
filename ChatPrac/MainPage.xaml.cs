@@ -27,12 +27,12 @@ namespace ChatPrac
 
 		private void btnEmplFind_Click(object sender, RoutedEventArgs e)
 		{
-
+			NavigationService.Navigate(new SearchPage());
 		}
 
 		private void btnClose_Click(object sender, RoutedEventArgs e)
 		{
-
+			
 		}
 	}
 }

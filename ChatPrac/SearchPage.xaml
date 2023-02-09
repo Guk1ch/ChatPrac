@@ -18,6 +18,9 @@
         <StackPanel Grid.Column="0">
             <TextBlock Text="Departments" HorizontalAlignment="Center" Margin="20"/>
         </StackPanel>
+        <StackPanel Grid.Column="1">
+            <TextBox x:Name="tbSearch" Width="260" Height="30" SelectionChanged="tbSearch_SelectionChanged" Margin="20"/>
+        </StackPanel>
 
     </Grid>
 </Page>
