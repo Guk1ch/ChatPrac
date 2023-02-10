@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ChatPrac.DataBase;
 
 namespace ChatPrac
 {
@@ -19,10 +20,11 @@ namespace ChatPrac
 	/// </summary>
 	public partial class ManeWindow : Window
 	{
-		public ManeWindow()
+		public static Employee employee { get; set; }
+		public ManeWindow(Employee employee)
 		{
 			InitializeComponent();
-			MainFrame.NavigationService.Navigate(new MainPage());
+			MainFrame.NavigationService.Navigate(new MainPage(MainWindow.employee));
 		}
 	}
 }
