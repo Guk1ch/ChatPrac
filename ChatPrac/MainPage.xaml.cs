@@ -21,19 +21,33 @@ namespace ChatPrac
 	/// </summary>
 	public partial class MainPage : Page
 	{
+		public List<Chatroom> chatrooms { get; set; }
+		public Employee Empl { get; set; }
 		public MainPage(Employee employee)
 		{
 			InitializeComponent();
+			chatrooms = BdConnect.connection.Chatroom.ToList();
+			Empl= employee;
+			DataContext = this;
 		}
 
 		private void btnEmplFind_Click(object sender, RoutedEventArgs e)
 		{
-			NavigationService.Navigate(new SearchPage());
+			NavigationService.Navigate(new SearchPage(null));
 		}
 
 		private void btnClose_Click(object sender, RoutedEventArgs e)
 		{
-			
+			System.Windows.Application.Current.Shutdown();
 		}
-	}
+
+        private void lvChat_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+			if(lvChat.SelectedItem != null)
+            {
+				var item = lvChat.SelectedItem as Chatroom;
+				NavigationService.Navigate(new inChatPage());
+            }
+        }
+    }
 }

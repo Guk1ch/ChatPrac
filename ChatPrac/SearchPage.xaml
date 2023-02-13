@@ -17,9 +17,25 @@
         </Grid.RowDefinitions>
         <StackPanel Grid.Column="0">
             <TextBlock Text="Departments" HorizontalAlignment="Center" Margin="20"/>
+            <ListView x:Name="lvDepartments" Grid.Column="0" Grid.Row="1" Grid.RowSpan="8" ItemsSource="{Binding departments}" SelectionChanged="lvDepartments_SelectionChanged">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn DisplayMemberBinding="{Binding Name}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
         </StackPanel>
         <StackPanel Grid.Column="1">
             <TextBox x:Name="tbSearch" Width="260" Height="30" SelectionChanged="tbSearch_SelectionChanged" Margin="20"/>
+            <ListView x:Name="lvEmployee"
+                      ItemsSource="{Binding Employees}"
+                      SelectionChanged="lvEmployee_SelectionChanged">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn DisplayMemberBinding="{Binding Name}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
         </StackPanel>
 
     </Grid>

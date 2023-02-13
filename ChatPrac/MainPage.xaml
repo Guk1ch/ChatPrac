@@ -24,7 +24,19 @@
         </Grid.RowDefinitions>
         <TextBlock Text="Hello" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="40" Margin="0,0,30,0"/>
         <TextBlock Text="{Binding Empl.Name}" Grid.Column="1" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="40" Margin="0,0,30,0"/>
-        <TextBlock Text="Your open chatrooms" Grid.Row="1" FontWeight="Bold" FontSize="25" VerticalAlignment="Bottom"/>
+        <TextBlock Text="Your open chatrooms" Grid.Row="1" Grid.ColumnSpan="2" FontWeight="Bold" FontSize="25" VerticalAlignment="Bottom"/>
+
+        <ScrollViewer Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="2" Grid.RowSpan="4">
+            <ListView x:Name="lvChat" ItemsSource="{Binding chatrooms}" SelectionChanged="lvChat_SelectionChanged" >
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Topic" DisplayMemberBinding="{Binding Topic}" Width="150"/>
+                        <GridViewColumn Header="Last message" DisplayMemberBinding="{Binding LastChatMessage, ConverterCulture=ru}" Width="250"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </ScrollViewer>
+
 
         <Button x:Name="btnEmplFind" Content="Finder" FontWeight="bold" Grid.Row="6" VerticalAlignment="Top" Height="40" Width="160" Background="White" BorderBrush="Black" BorderThickness="3,3,3,3" Click="btnEmplFind_Click">
             <Button.Effect>
