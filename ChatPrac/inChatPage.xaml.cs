@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ChatPrac.DataBase;
 
 namespace ChatPrac
 {
@@ -20,7 +21,10 @@ namespace ChatPrac
     /// </summary>
     public partial class inChatPage : Page
     {
-        public inChatPage()
+        public List<ChatMessage> ChatMessages { get; set; }
+        public List<ChatEmployee> EmployeeChatrooms { get; set; }
+        public Chatroom Chatroom { get; set; }
+        public inChatPage(Chatroom chatroom)
         {
             InitializeComponent();
         }

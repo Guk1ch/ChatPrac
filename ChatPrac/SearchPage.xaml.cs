@@ -34,12 +34,12 @@ namespace ChatPrac
 
 		private void tbSearch_SelectionChanged(object sender, RoutedEventArgs e)
 		{
-
+			Filter();
 		}
 
         private void lvDepartments_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+			Filter();
         }
 		private void Filter()
         {
@@ -58,7 +58,25 @@ namespace ChatPrac
 
         private void lvEmployee_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+			if(lvEmployee.SelectedItem != null)
+            {
+				var item = lvEmployee.SelectedItem as Employee;
+				ChatEmployee chatrom = new ChatEmployee();
+				chatrom.Employee_Id = item.Id;
+				chatrom.Chatroom_Id = ChatroomNow.Id;
 
+				var uniqUser = BdConnect.connection.ChatEmployee.Where(x=> x.Chatroom_Id == chatrom.Id && x.Employee_Id == chatrom.Employee_Id).FirstOrDefault();
+				if(uniqUser == null)
+                {
+					BdConnect.connection.ChatEmployee.Add(chatrom);
+					BdConnect.connection.SaveChanges();
+					NavigationService.Navigate(new inChatPage(ChatroomNow, null));
+                }
+                else
+                {
+					MessageBox.Show("Этот пользователь уже в чате");
+                }
+            }
         }
     }
 }
