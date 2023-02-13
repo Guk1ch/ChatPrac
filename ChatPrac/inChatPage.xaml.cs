@@ -27,6 +27,9 @@ namespace ChatPrac
         public inChatPage(Chatroom chatroom)
         {
             InitializeComponent();
+            ChatMessages = BdConnect.connection.ChatMessage.Where(x => x.Chatroom_Id == chatroom.Id).ToList();
+            EmployeeChatrooms = BdConnect.connection.ChatEmployee.Where(x => x.Chatroom_Id == chatroom.Id).ToList();
+            DataContext = this;
         }
     }
 }
