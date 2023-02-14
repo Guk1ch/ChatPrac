@@ -8,7 +8,7 @@ namespace ChatPrac.DataBase
 {
     public partial class Chatroom
     {
-        public DateTime LastChatMessage => this.ChatMessage.Max(x => (DateTime)x.Date);
+        //public DateTime LastChatMessage => this.ChatMessage.Max(x => (DateTime)x.Date);
     }
     public partial class Department
     {

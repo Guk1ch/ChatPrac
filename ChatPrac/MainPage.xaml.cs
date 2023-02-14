@@ -46,7 +46,7 @@ namespace ChatPrac
 			if(lvChat.SelectedItem != null)
             {
 				var item = lvChat.SelectedItem as Chatroom;
-				NavigationService.Navigate(new inChatPage());
+				NavigationService.Navigate(new inChatPage(item));
             }
         }
     }

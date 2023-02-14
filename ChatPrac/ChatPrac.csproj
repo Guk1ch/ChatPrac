@@ -102,6 +102,9 @@
     <Compile Include="inChatPage.xaml.cs">
       <DependentUpon>inChatPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="NewTitlePage.xaml.cs">
+      <DependentUpon>NewTitlePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SearchPage.xaml.cs">
       <DependentUpon>SearchPage.xaml</DependentUpon>
     </Compile>
@@ -129,6 +132,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="ManeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="NewTitlePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

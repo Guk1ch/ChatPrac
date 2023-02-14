@@ -70,7 +70,7 @@ namespace ChatPrac
                 {
 					BdConnect.connection.ChatEmployee.Add(chatrom);
 					BdConnect.connection.SaveChanges();
-					NavigationService.Navigate(new inChatPage(ChatroomNow, null));
+					NavigationService.Navigate(new inChatPage(ChatroomNow));
                 }
                 else
                 {
