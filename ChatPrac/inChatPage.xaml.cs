@@ -23,12 +23,13 @@ namespace ChatPrac
     {
         public List<ChatMessage> ChatMessages { get; set; }
         public List<ChatEmployee> EmployeeChatrooms { get; set; }
-        public Chatroom Chatroom { get; set; }
+        public Chatroom Chatrooms { get; set; }
         public inChatPage(Chatroom chatroom)
         {
             InitializeComponent();
             ChatMessages = BdConnect.connection.ChatMessage.Where(x => x.Chatroom_Id == chatroom.Id).ToList();
             EmployeeChatrooms = BdConnect.connection.ChatEmployee.Where(x => x.Chatroom_Id == chatroom.Id).ToList();
+            Chatrooms = chatroom;
             DataContext = this;
         }
         private void btnSend_Click(object sender, RoutedEventArgs e)
@@ -37,14 +38,14 @@ namespace ChatPrac
             {
                 ChatMessage message = new ChatMessage();
                 message.Sender_Id = MainWindow.employee.Id;
-                message.Chatroom_Id = Chatroom.Id;
+                message.Chatroom_Id = Chatrooms.Id;
                 message.Date = DateTime.Now;
                 message.Message = tbChat.Text.Trim();
                 BdConnect.connection.ChatMessage.Add(message);
                 BdConnect.connection.SaveChanges();
 
-                ChatMessages = BdConnect.connection.ChatMessage.Where(x => x.Chatroom_Id == Chatroom.Id).ToList();
-                EmployeeChatrooms = BdConnect.connection.ChatEmployee.Where(x => x.Chatroom_Id == Chatroom.Id).ToList();
+                ChatMessages = BdConnect.connection.ChatMessage.Where(x => x.Chatroom_Id == Chatrooms.Id).ToList();
+                EmployeeChatrooms = BdConnect.connection.ChatEmployee.Where(x => x.Chatroom_Id == Chatrooms.Id).ToList();
 
                 lvChat.ItemsSource = ChatMessages;
                 lvEmployee.ItemsSource = EmployeeChatrooms;
@@ -59,7 +60,7 @@ namespace ChatPrac
 
         private void btnLeaveChatroom_Click(object sender, RoutedEventArgs e)
         {
-            ChatEmployee chatroom = BdConnect.connection.ChatEmployee.Where(x => x.Chatroom_Id == Chatroom.Id
+            ChatEmployee chatroom = BdConnect.connection.ChatEmployee.Where(x => x.Chatroom_Id == Chatrooms.Id
             && x.Employee_Id == MainWindow.employee.Id).FirstOrDefault();
 
             if (chatroom != null)
@@ -81,7 +82,7 @@ namespace ChatPrac
 
         private void btnChangeTopic_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new NewTitlePage(null, Chatroom));
+            NavigationService.Navigate(new NewTitlePage(null, Chatrooms));
         }
 
     }
